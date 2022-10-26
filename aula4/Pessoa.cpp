@@ -1,5 +1,19 @@
 #include "Pessoa.hpp"
 #include <string>
+#include <iostream>
+
+
+    Pessoa::Pessoa(std::string nomePessoa): nome{nomePessoa}
+        ,cpf{0}, idade{0}{
+        std::cout << "contrutor de nomes\n";    
+    }
+    
+
+    Pessoa::Pessoa(std::string nomePessoa, unsigned short int idadePessoa, unsigned long cpf): Pessoa{nomePessoa}{
+        setIdade(idadePessoa);
+        setCpf(cpf);
+        std::cout << "contrutor de todo o resto\n";
+    }
 
     unsigned long Pessoa::getCpf(){
         return cpf;

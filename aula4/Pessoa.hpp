@@ -5,6 +5,9 @@
 
 class Pessoa{
     public:
+        Pessoa(std:: string nomePessoa);
+        Pessoa(std:: string nomePessoa, unsigned short int idadePessoa, unsigned long cpf);
+
         unsigned long getCpf();
         unsigned long setCpf(unsigned long novoCpf);
 

@@ -8,7 +8,7 @@ int main(){
     unsigned short idadeAux;
     std::string nomeAux;
     unsigned long cpfAux;
-    for (int i{0}; i < 1 ; i++){
+    for (int i{0}; i < 3 ; i++){
         std::cout << "nome: " << std::endl;
         std::cin >> nomeAux;
         pessoas[i].setNome(nomeAux);
@@ -24,7 +24,7 @@ int main(){
         std::cout << std::endl;
     }
 
-    for (int i{0}; i < 1 ; i++){
+    for (int i{0}; i < 3 ; i++){
         std::cout << "pessoa " << i << std::endl <<
         "Nome: " << pessoas[i].getNome() << std::endl <<
         "Idade: " << pessoas[i].getIdade() << std::endl << 

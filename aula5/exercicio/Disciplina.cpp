@@ -51,6 +51,7 @@ bool Disciplina::adicionarAluno(Pessoa *aluno){
 			alunos[i] = aluno;
 			return 1;
 		}
+		i++;
 	}
 	return 0;
 }
@@ -66,6 +67,7 @@ bool Disciplina::removerAluno(Pessoa *aluno){
 			alunos[i] = nullptr;
 			return 1;
 		}
+		i++;	
 	}
 	return 0;
 }
@@ -77,6 +79,7 @@ bool Disciplina::removerAluno(unsigned int cpf){
 			alunos[i] = nullptr;
 			return 1;
 		}
+		i++;
 	}
 	return 0;
 }

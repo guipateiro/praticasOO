@@ -8,11 +8,13 @@
 int main(){
 	Pessoa **p{new Pessoa*[5]};
 
-
+	std::string coisa{"BCC"};
+	Curso c1{coisa, 1980, 3600};
 	Pessoa* p1{new Pessoa{"guilherme" , 11144477735, 22}};
 
-	Disciplina d1{"Orientacao a Objetos", p1};
+	Disciplina d1{"Orientacao a Objetos", p1, c1};
 	d1.setCargaHoraria(60);
+
 	std::string * nomes{new std::string[5]{
 		"aaaaa","bbbbb","ccccc","ddddd","eeeee"}
 	};
@@ -36,15 +38,18 @@ int main(){
 	}	
 
 	d1.removerAluno(p[2]);
-	d1.imprimeDisciplina(3600);
+	d1.imprimeDisciplina();
 
-	std::cout << "Nome dos alunos: \n";
+	Curso c2{"IBM", 1980, 3000};
+	Pessoa* p2{new Pessoa{"Joao" , 11144477735, 22}};
+	Disciplina d2{"informatica bioinspirada", p2, c2};
+	d2.setCargaHoraria(90);
 	for(int i = 0; i < 5 ; i++){
-		if(d1.getVetorAlunos()[i] != nullptr){
-			std::cout << d1.getVetorAlunos()[i]->getNome() << std::endl;
-		}	
-	}
+		d2.adicionarAluno(p[i]);	
+	}	
+	d2.removerAluno(30493684034);
 
+	d2.imprimeDisciplina();
 
 	delete p1;
 	delete[] p;

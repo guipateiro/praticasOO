@@ -2,17 +2,16 @@
 
 #include <iostream>
 
-Disciplina::Disciplina(){
-	//alunos{new Pessoa[50]};
+Disciplina::Disciplina(Curso curso)
+	:curso{curso}{
 }
 
-Disciplina::Disciplina(std::string nome)
-	:nome{nome} {
-	//alunos{new Pessoa[50]};
+Disciplina::Disciplina(std::string nome, Curso curso)
+	:nome{nome}, curso{curso} {
 }
 
-Disciplina::Disciplina(std::string nome, Pessoa *professor)
-	:nome {nome}, professor{professor}{
+Disciplina::Disciplina(std::string nome, Pessoa *professor, Curso curso)
+	:nome {nome}, professor{professor}, curso{curso}{
 }
 
 std::string Disciplina::getNome(){
@@ -72,7 +71,7 @@ bool Disciplina::removerAluno(Pessoa *aluno){
 	return 0;
 }
 
-bool Disciplina::removerAluno(unsigned int cpf){
+bool Disciplina::removerAluno(unsigned long cpf){
 	int i = 0;
 	while (i < 50){
 		if (alunos[i] != nullptr && alunos[i]->getCpf() == cpf){
@@ -84,10 +83,28 @@ bool Disciplina::removerAluno(unsigned int cpf){
 	return 0;
 }
 
-void Disciplina::imprimeDisciplina(unsigned int cargaHorariaTotal){
+void Disciplina::imprimeAlunos(){
+	std::cout << "Nome dos alunos: \n";
+	for(int i = 0; i < 5 ; i++){
+		if(this->getVetorAlunos()[i] != nullptr){
+			std::cout << this->getVetorAlunos()[i]->getNome() << std::endl;
+		}	
+	}
+}	
+
+void Disciplina::imprimeDisciplina(){
 	std::cout << "==================\n";
 	std::cout << "dados da displina\n";
 	std::cout << "==================\n";
-	std::cout << "nome da disciplina: " << nome << "\tProfessor(a): " << professor->getNome() << std::endl;
-	std::cout << "caraga horaria: " << cargaHoraria << ",representando " << (float)(cargaHoraria *100)/cargaHorariaTotal<< "% do total do curso" << std::endl;
+	std::cout << "nome da disciplina: " << nome; std::cout.flush();
+	std::cout << "\tProfessor(a): " << professor->getNome() << std::endl;
+	std::cout << "caraga horaria: " << cargaHoraria << ",representando " << (float)(cargaHoraria *100)/this->curso.getCargaHoraria() << "% do total do curso" << std::endl;
+	std::cout << "Curso: " << this->curso.getNome() << std::endl;
+	this->imprimeAlunos();
 }
+
+
+Curso Disciplina::getCurso(){
+	return this->curso;
+}
+

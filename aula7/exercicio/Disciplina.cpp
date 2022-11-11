@@ -2,15 +2,15 @@
 
 #include <iostream>
 
-Disciplina::Disciplina(Curso curso)
+Disciplina::Disciplina(Curso &curso)
 	:curso{curso}{
 }
 
-Disciplina::Disciplina(std::string nome, Curso curso)
+Disciplina::Disciplina(std::string nome, Curso &curso)
 	:nome{nome}, curso{curso} {
 }
 
-Disciplina::Disciplina(std::string nome, Pessoa *professor, Curso curso)
+Disciplina::Disciplina(std::string nome, Pessoa *professor, Curso &curso)
 	:nome {nome}, professor{professor}, curso{curso}{
 }
 
@@ -44,51 +44,37 @@ std::string Disciplina::getNomeProfessor(){
 }
 
 bool Disciplina::adicionarAluno(Pessoa *aluno){
-	int i = 0;
-	while (i < 50){
-		if (alunos[i] == nullptr){
-			alunos[i] = aluno;
-			return 1;
-		}
-		i++;
-	}
+	this->alunos.push_back(aluno);
 	return 0;
 }
 
-Pessoa **Disciplina::getVetorAlunos(){
-	return alunos;
+std::list<Pessoa *> Disciplina::getVetorAlunos(){
+	return this->alunos;
 }
 
 bool Disciplina::removerAluno(Pessoa *aluno){
-	int i = 0;
-	while (i < 50){
-		if (alunos[i] != nullptr && alunos[i] == aluno){
-			alunos[i] = nullptr;
-			return 1;
-		}
-		i++;	
-	}
+	this->alunos.remove(aluno);
 	return 0;
 }
 
 bool Disciplina::removerAluno(unsigned long cpf){
-	int i = 0;
-	while (i < 50){
-		if (alunos[i] != nullptr && alunos[i]->getCpf() == cpf){
-			alunos[i] = nullptr;
-			return 1;
+	std::list<Pessoa*>::iterator it{this->alunos.begin()};
+	//removendo todas referências a Pedro
+	while(it != this->alunos.end()){
+		if((*it)->getCpf() == cpf){
+			delete *it;
+			it = alunos.erase(it);//it recebe o próximo item válido da lista
+		}else{
+			it++;
 		}
-		i++;
 	}
 	return 0;
 }
 
 void Disciplina::imprimeAlunos(){
-	std::cout << "Nome dos alunos: \n";
-	for(int i = 0; i < 5 ; i++){
-		if(this->getVetorAlunos()[i] != nullptr){
-			std::cout << this->getVetorAlunos()[i]->getNome() << std::endl;
-		}	
+	std::list<Pessoa*>::iterator it{this->alunos.begin()};
+	for( ; it != this->alunos.end() ; ++it){
+		std::cout << (*it)->getNome() << " " << (*it)->getCpf() << " " << (*it)->getIdade() << std::endl;
 	}
 }	
 

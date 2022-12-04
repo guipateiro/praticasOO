@@ -87,3 +87,7 @@ void Disciplina::removerConteudoMinistrado(unsigned long id){
     }    
     this->conteudos.erase(it);
 }
+
+void Disciplina::limparConteudos(){
+        this->conteudos.clear();
+}    

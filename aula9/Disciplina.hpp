@@ -32,6 +32,7 @@ class Disciplina{
 		void removerConteudoMinistrado(unsigned long id);
         void imprimirConteudosMinistrados();
 		std::list<ConteudoMinistrado*>& getConteudos();
+		void limparConteudos();
 
 	private:
 		std::string nome;

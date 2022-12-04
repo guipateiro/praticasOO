@@ -1,0 +1,4 @@
+function maek(){
+clear
+make  -B
+}

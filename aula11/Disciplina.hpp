@@ -11,34 +11,35 @@ class SalaAula;//Forward Declaration
 
 class Disciplina{
 	public:
-	Disciplina(std::string nome);
-		Disciplina(std::string nome, SalaAula* sala);
+		Disciplina(const std::string& nome);
+		Disciplina(const std::string& nome, SalaAula* const sala);
 
 		~Disciplina();
 
-		std::string getNome() const;
-		void setNome(std::string nome);
+		const std::string& getNome() const;
+		void setNome(const std::string& nome);
 		
-		int getCargaHoraria()const;
-		void setCargaHoraria(unsigned int carga);
+		int getCargaHoraria() const;
+		void setCargaHoraria(const unsigned int carga);
 
 		const Pessoa* getProfessor() const;
-        void setProfessor(Pessoa* prof);
+        void setProfessor(Pessoa* const prof);
 
-		void setSalaAula(SalaAula* sala);
+		void setSalaAula(SalaAula* const sala);
         const SalaAula* getSalaAula() const;
 		void anularSalaAula();
 
-		void imprimirDados(std::string& cabecalho, unsigned int cargaTotalCurso) const;
+		void imprimirDados(const std::string& cabecalho, const unsigned int cargaTotalCurso) const;
 
-		void adicionarConteudoMinistrado(std::string conteudo, unsigned short cargaHorariaConteudo);
+		void adicionarConteudoMinistrado(const std::string& conteudo, const unsigned short cargaHorariaConteudo);
         void imprimirConteudosMinistrados() const;
 		const std::list<ConteudoMinistrado*>& getConteudos() const;
 
-		void adicionarAluno(Pessoa* aluno);
-		void removerAluno(Pessoa* aluno);
-		void removerAluno(unsigned long cpf);
+		void adicionarAluno(Pessoa* const aluno);
+		void removerAluno(Pessoa* const aluno);
+		void removerAluno(const unsigned long cpf);
 		const std::list<Pessoa*>& getAlunos() const;
+
 	private:
 		std::string nome;
 		unsigned short int cargaHoraria;

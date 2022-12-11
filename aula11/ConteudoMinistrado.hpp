@@ -5,11 +5,11 @@
 
 class ConteudoMinistrado{
     public:
-        ConteudoMinistrado(std::string descricao, unsigned short cargaHorariaConteudo);
+        ConteudoMinistrado(const std::string& descricao, const unsigned short cargaHorariaConteudo);
 
-        std::string& getDescricao();
-        unsigned short getCargaHorariaConteudo();
-        unsigned int getId();
+        const std::string& getDescricao() const;
+        unsigned short getCargaHorariaConteudo() const;
+        unsigned int getId() const;
     private:
         static unsigned int proxId;
 

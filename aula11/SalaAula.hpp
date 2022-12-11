@@ -7,19 +7,19 @@
 #include "Disciplina.hpp"
 
 class SalaAula{
-	friend void Disciplina::setSalaAula(SalaAula* salaAula);
+	friend void Disciplina::setSalaAula(SalaAula* const salaAula);
 
 	public:
-		SalaAula(std::string nome, unsigned int capacidade);
+		SalaAula(const std::string nome,const unsigned int capacidade);
 		~SalaAula();
 		
-		std::string getNome();
-		void setNome(std::string nome);
+		std::string getNome() const ;
+		void setNome(const std::string nome);
 
-		unsigned int getCapacidade();
-		void setCapcidade(unsigned int capacidade);
+		unsigned int getCapacidade() const;
+		void setCapcidade(const unsigned int capacidade);
 
-        std::list<Disciplina*>& getDisciplinas();
+        const std::list<Disciplina*>& getDisciplinas() const;
 	private:
 		std::string nome;
 		unsigned int capacidade;

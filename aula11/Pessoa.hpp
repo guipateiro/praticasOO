@@ -6,21 +6,21 @@
 class Pessoa{
     public:
         Pessoa();
-        Pessoa(std::string nome);
-        Pessoa(std::string nome, unsigned long cpf, unsigned short int idade);
+        Pessoa(const std::string& nome);
+        Pessoa(const std::string& nome, const unsigned long cpf, const unsigned short int idade);
 
-        unsigned long getCpf() const ;
-        void setCpf(unsigned long cpf);
+        unsigned long getCpf() const;
+        void setCpf(const unsigned long cpf);
 
-        std::string getNome() const ;
-        void setNome(std::string nome);
+        std::string getNome() const;
+        void setNome(const std::string& nome);
 
-        unsigned short int getIdade() const ;
-        void setIdade(unsigned short int idade);
+        unsigned short int getIdade() const;
+        void setIdade(const unsigned short int idade);
 
-        void imprimirEnderecoMemoria();
+        void imprimirEnderecoMemoria() const;
     private:
-        bool validarCPF(unsigned long cpfTeste);
+        bool validarCPF(unsigned long cpfTeste) const;
 
         std::string nome;
         unsigned long cpf;

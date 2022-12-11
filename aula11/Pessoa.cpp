@@ -4,13 +4,13 @@
 
 Pessoa::Pessoa(){}
 
-Pessoa::Pessoa(std::string nome)
+Pessoa::Pessoa(const std::string& nome)
 	:nome{nome}{
 }
 
-Pessoa::Pessoa(std::string nome,
-	unsigned long cpf,
-	unsigned short int idade)
+Pessoa::Pessoa(const std::string& nome,
+			const unsigned long cpf,
+			const unsigned short int idade)
 		:Pessoa{nome}{
 	setCpf(cpf);
 	setIdade(idade);
@@ -21,7 +21,7 @@ unsigned long Pessoa::getCpf() const{
     return this->cpf;
 }
 
-void Pessoa::setCpf(unsigned long cpf){
+void Pessoa::setCpf(const unsigned long cpf){
     if(validarCPF(cpf)){
         this->cpf = cpf;
         return;
@@ -34,7 +34,7 @@ std::string Pessoa::getNome() const{
     return this->nome;
 }
 
-void Pessoa::setNome(std::string nome){
+void Pessoa::setNome(const std::string& nome){
     this->nome = nome;
 }
 
@@ -42,18 +42,18 @@ unsigned short int Pessoa::getIdade() const{
     return (unsigned short int)idade;
 }
 
-void Pessoa::setIdade(unsigned short int novaIdade){
+void Pessoa::setIdade(const unsigned short int novaIdade){
 	if(novaIdade < 120)
     	idade = (unsigned char)novaIdade;
 	else
 		idade = 0; //indicar erro
 }
 
-void Pessoa::imprimirEnderecoMemoria(){
+void Pessoa::imprimirEnderecoMemoria() const{
     std::cout << this << std::endl;
 }
 
-bool Pessoa::validarCPF(unsigned long cpfTeste){
+bool Pessoa::validarCPF(unsigned long cpfTeste) const{
 	int somatorioValidaUltimo;
 	int modulo;
 	int somatorioValidaPenultimo = 0;

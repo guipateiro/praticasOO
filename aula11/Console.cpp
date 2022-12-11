@@ -2,7 +2,7 @@
 
 #include<iostream>
 
-void Console::imprimirDadosDisciplina(Disciplina& disciplina){
+void Console::imprimirDadosDisciplina(const Disciplina& disciplina){
 	std::cout << "Disicplina: "<< disciplina.getNome() << std::endl;
 	if(disciplina.getProfessor() != nullptr)
 		std::cout << "Professor: " << disciplina.getProfessor()->getNome() << std::endl;
@@ -11,7 +11,7 @@ void Console::imprimirDadosDisciplina(Disciplina& disciplina){
 
 	std::cout << "Conteudos Ministrados" << std::endl;
 
-        std::list<ConteudoMinistrado*>::iterator it;
+        std::list<ConteudoMinistrado*>::const_iterator it;
         for(it = disciplina.getConteudos().begin(); it!=disciplina.getConteudos().end(); it++){
                 std::cout << "Id: " << (*it)->getId() << std::endl
                         << "Conteudo: " << (*it)->getDescricao() << std::endl

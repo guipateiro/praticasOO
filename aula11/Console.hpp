@@ -5,7 +5,7 @@
 
 class Console{
 	public:
-		static void imprimirDadosDisciplina(Disciplina& disciplina);
+		static void imprimirDadosDisciplina(const Disciplina& disciplina);
 	
 };
 #endif

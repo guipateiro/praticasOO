@@ -4,11 +4,11 @@
 
 #include "SalaAula.hpp"
 
-Disciplina::Disciplina(std::string nome)
+Disciplina::Disciplina(const std::string& nome)
 	:nome{nome},sala{nullptr} {
 }
 
-Disciplina::Disciplina(std::string nome, SalaAula* sala)
+Disciplina::Disciplina(const std::string& nome, SalaAula* const sala)
         :Disciplina{nome} {
     this->setSalaAula(sala);
 }
@@ -22,31 +22,31 @@ Disciplina::~Disciplina(){
         delete *it;//liberando a memória de cada conteúdo
 }
 
-std::string Disciplina::getNome(){
+const std::string& Disciplina::getNome() const{
 	return nome;
 }
 
-void Disciplina::setNome(std::string nome){
+void Disciplina::setNome(const std::string& nome){
 	this->nome = nome;
 }
 
-int Disciplina::getCargaHoraria(){
+int Disciplina::getCargaHoraria() const{
 	return this->cargaHoraria;
 }
 
-void Disciplina::setCargaHoraria(unsigned int carga){
+void Disciplina::setCargaHoraria(const unsigned int carga){
 	this->cargaHoraria = carga;
 }
 
-Pessoa* Disciplina::getProfessor(){
+const Pessoa* Disciplina::getProfessor() const{
     return this->professor;
 }
 
-void Disciplina::setProfessor(Pessoa* prof){
+void Disciplina::setProfessor(Pessoa* const prof){
     this->professor = prof;
 }
 
-void Disciplina::setSalaAula(SalaAula* sala){
+void Disciplina::setSalaAula(SalaAula* const sala){
     if(this->sala != nullptr)//se já existia uma sala, remover a disciplina dessa sala
         this->sala->disciplinasMinistradas.remove(this);
     this->sala = sala;
@@ -58,11 +58,11 @@ void Disciplina::anularSalaAula(){
 	this->sala = nullptr;
 }
 
-SalaAula* Disciplina::getSalaAula(){
+const SalaAula* Disciplina::getSalaAula() const{
     return this->sala;
 }
 
-void Disciplina::imprimirDados(std::string& cabecalho, unsigned int cargaTotalCurso){
+void Disciplina::imprimirDados(const std::string& cabecalho, const unsigned int cargaTotalCurso) const{
     double pctCurso = (double)this->cargaHoraria/cargaTotalCurso;
     pctCurso = pctCurso * 100;
     std::cout << cabecalho << std::endl;
@@ -72,12 +72,12 @@ void Disciplina::imprimirDados(std::string& cabecalho, unsigned int cargaTotalCu
     std::cout << "Professor: " << this->professor->getNome() << std::endl;
 }
 
-void Disciplina::adicionarConteudoMinistrado(std::string conteudo, unsigned short cargaHorariaConteudo){
+void Disciplina::adicionarConteudoMinistrado(const std::string& conteudo, const unsigned short cargaHorariaConteudo){
     this->conteudos.push_back(new ConteudoMinistrado{conteudo, cargaHorariaConteudo});
 }
 
-void Disciplina::imprimirConteudosMinistrados(){
-    std::list<ConteudoMinistrado*>::iterator it;
+void Disciplina::imprimirConteudosMinistrados() const{
+    std::list<ConteudoMinistrado*>::const_iterator it;
     for(it = conteudos.begin(); it!=conteudos.end(); it++){
         std::cout << "Id: " << (*it)->getId() << std::endl
             << "Conteudo: " << (*it)->getDescricao() << std::endl
@@ -89,24 +89,24 @@ const std::list<ConteudoMinistrado*>& Disciplina::getConteudos() const{
     return this->conteudos;
 }
 
-void Disciplina::adicionarAluno(Pessoa* aluno){
-    this->alunos.push_back(aluno);
+void Disciplina::adicionarAluno(Pessoa* const aluno){
+	this->alunos.push_back(aluno);
 }
 
-void Disciplina::removerAluno(Pessoa* aluno){
-    this->alunos.remove(aluno);
+void Disciplina::removerAluno(Pessoa* const aluno){
+	this->alunos.remove(aluno);
 }
 
-void Disciplina::removerAluno(unsigned long cpf){
-    std::list<Pessoa*>::iterator it;
+void Disciplina::removerAluno(const unsigned long cpf){
+	std::list<Pessoa*>::iterator it;
 
-    for(it = this->alunos.begin(); it != this->alunos.end(); it++)
-        if((*it)->getCpf() == cpf)
-            break;
-    if(it != this->alunos.end())
-        alunos.erase(it);
+	for(it = this->alunos.begin(); it != this->alunos.end(); it++)
+		if((*it)->getCpf() == cpf)
+			break;
+	if(it != this->alunos.end())
+		this->alunos.erase(it);
 }
 
 const std::list<Pessoa*>& Disciplina::getAlunos() const{//retornamos uma referência para a lista, o que custa mais barato
-    return alunos;
+	return this->alunos;
 }

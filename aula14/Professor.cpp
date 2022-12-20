@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Professor.hpp"
 
 Professor::Professor(const std::string& nome, const unsigned long cpf,
@@ -8,7 +7,6 @@ Professor::Professor(const std::string& nome, const unsigned long cpf,
 }
 
 Professor::~Professor(){
-    std::cout << "finalizando professor \n";
 }
 
 void Professor::setValorHora(const unsigned int valorHora){

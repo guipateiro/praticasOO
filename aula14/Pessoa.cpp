@@ -21,11 +21,6 @@ Pessoa::Pessoa(const std::string& nome,
 	setIdade(idade);
 }
 
-Pessoa::~Pessoa(){
-	std::cout << "finalizando Pessoa\n";
-}
-
-
 unsigned long Pessoa::getCpf() const{
     //retorna uma cópia do cpf
     return this->cpf;

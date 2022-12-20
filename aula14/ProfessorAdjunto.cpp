@@ -1,4 +1,3 @@
-#include <iostream>
 #include "ProfessorAdjunto.hpp"
 
 
@@ -12,8 +11,4 @@ void ProfessorAdjunto::setLinhaPesquisa(const std::string& linhaPesquisa){
 
 unsigned int ProfessorAdjunto::getSalario() const{
     return Professor::getSalario() * 1.1;
-}
-
-ProfessorAdjunto::~ProfessorAdjunto(){
-    std::cout << "finalizando professor adjunto\n";
 }

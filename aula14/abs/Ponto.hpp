@@ -1,5 +1,6 @@
 #ifndef PONTO_HPP
 #define PONTO_HPP
+
 class Ponto{
 	public:
 		Ponto(const double coordX, const double coodY);

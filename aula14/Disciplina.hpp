@@ -15,7 +15,7 @@ class Disciplina{
 		Disciplina(const std::string& nome);
 		Disciplina(const std::string& nome, SalaAula* const sala);
 
-		~Disciplina();
+		virtual ~Disciplina();
 
 		const std::string& getNome() const;
 		void setNome(const std::string& nome);

@@ -10,7 +10,7 @@ class Pessoa{
         Pessoa(const std::string& nome, const unsigned long cpf);
         Pessoa(const std::string& nome, const unsigned long cpf, const unsigned short int idade);
 
-        virtual ~Pessoa();
+        virtual ~Pessoa() = default;
 
         unsigned long getCpf() const;
         void setCpf(const unsigned long cpf);

@@ -1,7 +1,9 @@
 #include "SalaAula.hpp"
+#include "MenorqZeroException.hpp"
 
 SalaAula::SalaAula(std::string nome, unsigned int capacidade)
-	:nome{nome}, capacidade{capacidade}{
+	:nome{nome}{
+	setCapcidade(capacidade);
 }
 
 SalaAula::~SalaAula(){
@@ -19,11 +21,13 @@ void SalaAula::setNome(std::string nome){
 }
 
 unsigned int SalaAula::getCapacidade(){
-	return this->capacidade;
+	return this->capacidade;	
 }
 
 void SalaAula::setCapcidade(unsigned int capacidade){
-	this->capacidade = capacidade;
+	if((int)capacidade > 0)
+		this->capacidade = capacidade;
+	throw MenorqZeroException{capacidade};
 }
 
 std::list<Disciplina*>& SalaAula::getDisciplinas(){

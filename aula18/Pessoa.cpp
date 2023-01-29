@@ -5,7 +5,7 @@
 
 #include "CPFInvalidoException.hpp"
 
-using namespace ufpr;
+namespace ufpr{
 
 Pessoa::Pessoa(const std::string& nome, const unsigned long cpf) : nome{nome}, cpf{cpf} {
 }
@@ -43,3 +43,12 @@ void Pessoa::setIdade(const unsigned short int novaIdade) {
 }
 
 void Pessoa::imprimirEnderecoMemoria() const { std::cout << this << std::endl; }
+
+
+bool Pessoa::operator==(const Pessoa& outro) const{
+	if ((this->cpf == outro.cpf) && (this->idade == outro.idade) && (this->nome == outro.nome))
+		return 1;
+	return 0; 	
+}
+
+}

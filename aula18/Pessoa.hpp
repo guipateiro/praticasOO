@@ -7,6 +7,9 @@
 
 namespace ufpr{
 class Pessoa{
+    
+    friend std::ostream& operator>>(std::ostream& stream, const ufpr::Pessoa& pessoa);
+    
     public:
         Pessoa(const std::string& nome, const unsigned long cpf);
         Pessoa(const std::string& nome, const CPF& cpf);
@@ -25,6 +28,10 @@ class Pessoa{
         void setIdade(const unsigned short int idade);
 
         void imprimirEnderecoMemoria() const;
+
+        bool operator()(const unsigned int inicio, const unsigned int fim) const;
+        unsigned short operator[](const int idx);
+        bool operator==(const Pessoa& outro) const;
     protected:
         std::string nome;
         CPF cpf;

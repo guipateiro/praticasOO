@@ -1,20 +1,23 @@
 #include "Professor.hpp"
-#include "MenorqZeroException.hpp"
+
+using namespace ufpr;
 
 Professor::Professor(const std::string& nome, const unsigned long cpf,
                const unsigned int valorHora, const unsigned short cargaHoraria)
-        :Pessoa(nome, cpf){
-        setValorHora(valorHora);
-        setCargaHoraria(cargaHoraria);    
+        :Pessoa(nome, cpf), valorHora(valorHora), cargaHoraria(cargaHoraria) {
+}
+
+Professor::Professor(const std::string& nome, const CPF& cpf,
+               const unsigned int valorHora, const unsigned short cargaHoraria)
+        :Pessoa(nome, cpf), valorHora(valorHora), cargaHoraria(cargaHoraria) {
 }
 
 Professor::~Professor(){
 }
 
 void Professor::setValorHora(const unsigned int valorHora){
-    if((int)valorHora <= 0)
-        throw MenorqZeroException(valorHora);    
-    this->valorHora = valorHora;
+    if(valorHora > 0)
+        this->valorHora = valorHora;
 }
 
 unsigned int Professor::getValorHora() const{
@@ -22,9 +25,8 @@ unsigned int Professor::getValorHora() const{
 }
 
 void Professor::setCargaHoraria(const unsigned short cargaHoraria){
-    if((short)cargaHoraria <= 0)
-        throw MenorqZeroException(cargaHoraria);    
-    this->cargaHoraria = cargaHoraria;
+    if(cargaHoraria > 0)
+        this->cargaHoraria = cargaHoraria;
 }
 
 unsigned short Professor::getCargaHoraria() const{

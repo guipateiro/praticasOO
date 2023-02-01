@@ -19,6 +19,9 @@ class Disciplina {
     Disciplina(const std::string &nome, SalaAula *const sala, const EnumTipoDisciplina tipo);
     Disciplina(const std::string &nome, SalaAula *const sala, const EnumTipoDisciplina tipo, const Ementa& ementa);
 
+	Disciplina(const Disciplina& disciplina);
+	Disciplina(Disciplina&& disciplina);
+
     virtual ~Disciplina();
 
     const std::string &getNome() const;
@@ -49,6 +52,11 @@ class Disciplina {
 
     void setEmenta(const Ementa& ementa);
     const Ementa& getEmenta() const;
+
+	bool operator==(const Disciplina& outro) const;
+    bool operator!=(const Disciplina& outro) const;
+	const Disciplina& operator=(const Disciplina& disciplina);
+	Disciplina& operator=(Disciplina&& disciplina);
 
    private:
     std::string nome;

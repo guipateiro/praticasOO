@@ -120,4 +120,84 @@ void Disciplina::setEmenta(const Ementa& ementa){
 const Ementa& Disciplina::getEmenta() const{
     return this->ementa;
 }
+
+Disciplina::Disciplina(const Disciplina& disciplina)
+	:nome{disciplina.nome},
+	cargaHoraria{disciplina.cargaHoraria},
+	professor{disciplina.professor},
+	sala{disciplina.sala},
+	tipo{disciplina.tipo},
+	ementa{disciplina.ementa},
+	conteudos{disciplina.conteudos},
+	alunos{disciplina.alunos}{
+    std::cout << "Copiando disciplina " << std::endl;
+}
+
+Disciplina::Disciplina(Disciplina&& disciplina)
+    :nome{disciplina.nome},
+	cargaHoraria{disciplina.cargaHoraria},
+	professor{disciplina.professor},
+	sala{disciplina.sala},
+	tipo{disciplina.tipo},
+	ementa{disciplina.ementa},
+	conteudos{disciplina.conteudos},
+	alunos{disciplina.alunos}{
+    std::cout << "Move constructor " << std::endl;
+}
+
+Disciplina& Disciplina::operator=(Disciplina&& disciplina){
+    if(this == &disciplina){
+        return *this;
+	}	
+    this->nome = disciplina.nome;
+	this->cargaHoraria = disciplina.cargaHoraria;
+	this->professor = disciplina.professor;
+	this->sala = disciplina.sala;
+	this->tipo = disciplina.tipo;
+	this->ementa = disciplina.ementa;
+	this->conteudos = disciplina.conteudos;
+	this->alunos = disciplina.alunos;
+
+    std::cout << "Move Assignment" << '\n';
+
+    return *this;
+}
+
+const Disciplina& Disciplina::operator=(const Disciplina& disciplina){
+    if(this == &disciplina){
+        return *this;
+	}	
+	this->nome = disciplina.nome;
+	this->cargaHoraria = disciplina.cargaHoraria;
+	this->professor = new Professor{*disciplina.professor};
+	this->sala = new SalaAula{*disciplina.sala};
+	this->tipo = disciplina.tipo;
+	this->ementa = disciplina.ementa;
+	this->conteudos = disciplina.conteudos;
+	this->alunos = disciplina.alunos;
+
+    std::cout << "Operador de atribuiução" << '\n';
+
+    return *this;
+}
+
+bool Disciplina::operator==(const Disciplina& outro) const{
+	if(	this->nome == outro.nome &&
+		this->cargaHoraria == outro.cargaHoraria &&
+		this->professor == outro.professor &&
+		this->sala == outro.sala &&
+		this->tipo == outro.tipo &&
+		//this->ementa == outro.ementa &&
+		this->conteudos == outro.conteudos &&
+		this->alunos == outro.alunos)
+		return 1;
+	return 0;
+}
+
+bool Disciplina::operator!=(const Disciplina& outro) const{
+	if(*this == outro)
+		return 0;
+	return 1;	
+}
+
 }

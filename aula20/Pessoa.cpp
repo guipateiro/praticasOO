@@ -34,12 +34,12 @@ std::string Pessoa::getNome() const { return this->nome; }
 void Pessoa::setNome(const std::string& nome) { this->nome = nome; }
 
 unsigned short int Pessoa::getIdade() const {
-    return static_cast<unsigned short int>(idade);
+    return (unsigned short int)idade;
 }
 
 void Pessoa::setIdade(const unsigned short int novaIdade) {
     if (novaIdade > 120) throw std::invalid_argument{"Idade Invalida."};
-    idade = static_cast<unsigned char>(novaIdade);
+    idade = (unsigned char)novaIdade;
 }
 
 void Pessoa::imprimirEnderecoMemoria() const { std::cout << this << std::endl; }

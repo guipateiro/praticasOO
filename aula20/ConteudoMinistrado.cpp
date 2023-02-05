@@ -4,7 +4,7 @@ using namespace ufpr;
 
 unsigned int ConteudoMinistrado::proxId{0};
 
-ConteudoMinistrado::ConteudoMinistrado(const std::string& descricao, const unsigned short cargaHorariaConteudo):
+ConteudoMinistrado::ConteudoMinistrado( const std::string& descricao, const unsigned short cargaHorariaConteudo):
     descricao(descricao), cargaHorariaConteudo(cargaHorariaConteudo), id{ConteudoMinistrado::proxId}{
         ConteudoMinistrado::proxId++;
 }

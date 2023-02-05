@@ -122,7 +122,11 @@ std::istream& operator>>(std::istream& stream, CPF& cpf){
     return stream;
 }
 
-CPF::operator unsigned long () const{
-    return this->numero;
+CPF::operator std::string() const{
+	std::stringstream ss;
+    ss << "String cpf: " << this->numero;
+    return ss.str();
 }
+
+
 }  // namespace ufpr

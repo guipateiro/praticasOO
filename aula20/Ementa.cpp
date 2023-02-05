@@ -62,7 +62,7 @@ const Ementa& Ementa::operator=(const Ementa& ementa){
         return *this;
     this->descricao = ementa.descricao;
     delete this->livros;
-    this->livros = new std::list{*ementa.livros};
+    this->livros = new std::list<Livro>{*ementa.livros};
 
     std::cout << "Operador de atribuiução" << '\n';
 

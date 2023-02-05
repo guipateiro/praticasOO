@@ -23,14 +23,15 @@ class CPF{
         bool operator<=(const CPF& outro) const;
         bool operator>=(const CPF& outro) const;
 
-        explicit operator unsigned long () const;
-
         const CPF& operator=(const CPF& outro);
         const CPF& operator=(const unsigned long numero);
 
         unsigned short operator[](short int idx) const;
         unsigned long operator()(short int inicio, short int tam) const;
-    private:
+    
+		operator std::string() const;
+
+	private:
         bool validarCPF(unsigned long cpfTeste) const;
         unsigned long numero;
 };
